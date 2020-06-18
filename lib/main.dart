@@ -1,6 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterstudy/newroute.dart';
+import 'package:flutterstudy/layoutwidget/flexlayout.dart';
+import 'package:flutterstudy/layoutwidget/linearlayout.dart';
+import 'package:flutterstudy/mytest/newroute.dart';
+import 'package:flutterstudy/mytest/state_manager.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowMaterialGrid: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        platform: TargetPlatform.iOS,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -30,7 +36,8 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+//      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MainContainer(),
     );
   }
 }
@@ -55,6 +62,42 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    print("initState");
+  }
+
+  @override
+  void didUpdateWidget(MyHomePage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("didUpdateWidget");
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    print("deactivate");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("dispose");
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    print("reassemble");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("didChangeDependencies");
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -106,10 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline3,
+              style: Theme.of(context).textTheme.headline3,
             ),
             FlatButton(
               onPressed: () {
@@ -119,6 +159,15 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               textColor: Colors.blue,
               child: Text('open new route'),
+            ),
+            FlatButton(
+              child: Text("data"),
+              onPressed: () {
+                Navigator.push(context, CupertinoPageRoute(builder: (context) {
+                  return StateManager();
+                }));
+              },
+              textColor: Colors.green,
             )
           ],
         ),
@@ -128,6 +177,153 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class MainContainer extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MainContainerState();
+  }
+}
+
+class _MainContainerState extends State<MainContainer> {
+//  List<Color> colorList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    print("initState");
+  }
+
+@override
+  void didUpdateWidget(MainContainer oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print('didUpdateWidget');
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    print("deactivate");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("dispose");
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    print("reassemble");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("didChangeDependencies");
+  }
+
+  var _colorList = [
+    Colors.blue,
+    Colors.blue[300],
+    Colors.teal,
+    Colors.teal[700],
+    Colors.amber,
+    Colors.cyan,
+    Colors.red,
+    Colors.orange,
+    Colors.green,
+    Colors.brown,
+    Colors.purple
+  ];
+
+  int getRandomColor() {
+    var r = Random().nextInt(_colorList.length);
+    print("r=$r");
+    return r;
+  }
+
+  ///跳转路径
+  ///routeName是路径名
+  goPage(Widget routeName) {
+    Navigator.push(
+        context, new MaterialPageRoute(builder: (context) => routeName));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter学习'),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: new Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Wrap(
+            direction: Axis.horizontal,
+            alignment: WrapAlignment.spaceBetween,
+            spacing: 10.0,
+            runSpacing: 0,
+            children: <Widget>[
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(LinearLayout());
+                },
+                child: Text(
+                  '线性布局',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(FlexLayout());
+                },
+                child: Text(
+                  '弹性布局',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  getRandomColor();
+                },
+                child: Text(
+                  '流式布局',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  getRandomColor();
+                },
+                child: Text(
+                  '层叠布局',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  getRandomColor();
+                },
+                child: Text(
+                  '对齐与相对定位',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
