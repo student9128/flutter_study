@@ -7,11 +7,11 @@ class LinearLayout extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text("线性布局"),
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pop(context);
-              }),
+//          leading: IconButton(
+//              icon: Icon(Icons.arrow_back),
+//              onPressed: () {
+//                Navigator.pop(context);
+//              }),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,

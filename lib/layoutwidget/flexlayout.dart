@@ -7,11 +7,11 @@ class FlexLayout extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text("弹性布局Flex"),
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pop(context);
-              }),
+//          leading: IconButton(
+//              icon: Icon(Icons.arrow_back),
+//              onPressed: () {
+//                Navigator.pop(context);
+//              }),
         ),
         body: Column(
           children: <Widget>[

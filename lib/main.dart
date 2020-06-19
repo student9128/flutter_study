@@ -3,7 +3,10 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterstudy/layoutwidget/flexlayout.dart';
+import 'package:flutterstudy/layoutwidget/flowlayout.dart';
 import 'package:flutterstudy/layoutwidget/linearlayout.dart';
+import 'package:flutterstudy/layoutwidget/relativelayout.dart';
+import 'package:flutterstudy/layoutwidget/stacklayout.dart';
 import 'package:flutterstudy/mytest/newroute.dart';
 import 'package:flutterstudy/mytest/state_manager.dart';
 
@@ -293,7 +296,7 @@ class _MainContainerState extends State<MainContainer> {
               RaisedButton(
                 color: _colorList[getRandomColor()],
                 onPressed: () {
-                  getRandomColor();
+                  goPage(FlowLayout());
                 },
                 child: Text(
                   '流式布局',
@@ -303,7 +306,7 @@ class _MainContainerState extends State<MainContainer> {
               RaisedButton(
                 color: _colorList[getRandomColor()],
                 onPressed: () {
-                  getRandomColor();
+                 goPage(StackLayout());
                 },
                 child: Text(
                   '层叠布局',
@@ -313,7 +316,7 @@ class _MainContainerState extends State<MainContainer> {
               RaisedButton(
                 color: _colorList[getRandomColor()],
                 onPressed: () {
-                  getRandomColor();
+                  goPage(RelativeLayout());
                 },
                 child: Text(
                   '对齐与相对定位',
