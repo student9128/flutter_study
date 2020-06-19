@@ -5,7 +5,7 @@ class FlowLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('State'),
+        title: Text('流式布局'),
       ),
       body: Column(
         children: <Widget>[

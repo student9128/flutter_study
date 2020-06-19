@@ -5,7 +5,7 @@ class RelativeLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('StackLayout'),
+          title: Text('对齐与相对定位'),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

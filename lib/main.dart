@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterstudy/containerwidget/constraintwidget.dart';
+import 'package:flutterstudy/containerwidget/navwidget.dart';
 import 'package:flutterstudy/layoutwidget/flexlayout.dart';
 import 'package:flutterstudy/layoutwidget/flowlayout.dart';
 import 'package:flutterstudy/layoutwidget/linearlayout.dart';
@@ -200,7 +202,7 @@ class _MainContainerState extends State<MainContainer> {
     print("initState");
   }
 
-@override
+  @override
   void didUpdateWidget(MainContainer oldWidget) {
     super.didUpdateWidget(oldWidget);
     print('didUpdateWidget');
@@ -236,12 +238,19 @@ class _MainContainerState extends State<MainContainer> {
     Colors.teal,
     Colors.teal[700],
     Colors.amber,
+    Colors.amber[700],
     Colors.cyan,
+    Colors.cyan[700],
     Colors.red,
+    Colors.red[300],
     Colors.orange,
+    Colors.orange[700],
     Colors.green,
+    Colors.green[300],
     Colors.brown,
-    Colors.purple
+    Colors.brown[700],
+    Colors.purple,
+    Colors.purple[300]
   ];
 
   int getRandomColor() {
@@ -306,7 +315,7 @@ class _MainContainerState extends State<MainContainer> {
               RaisedButton(
                 color: _colorList[getRandomColor()],
                 onPressed: () {
-                 goPage(StackLayout());
+                  goPage(StackLayout());
                 },
                 child: Text(
                   '层叠布局',
@@ -320,6 +329,36 @@ class _MainContainerState extends State<MainContainer> {
                 },
                 child: Text(
                   '对齐与相对定位',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(ConstraintWidget());
+                },
+                child: Text(
+                  '尺寸限制类、装饰类容器，变换',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(NavWidget());
+                },
+                child: Text(
+                  '导航容器',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(RelativeLayout());
+                },
+                child: Text(
+                  'SingleChildScrollView',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
