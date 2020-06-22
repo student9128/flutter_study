@@ -11,6 +11,11 @@ import 'package:flutterstudy/layoutwidget/relativelayout.dart';
 import 'package:flutterstudy/layoutwidget/stacklayout.dart';
 import 'package:flutterstudy/mytest/newroute.dart';
 import 'package:flutterstudy/mytest/state_manager.dart';
+import 'package:flutterstudy/scrollablewidget/customscrollviewwidget.dart';
+import 'package:flutterstudy/scrollablewidget/gridviewwidget.dart';
+import 'package:flutterstudy/scrollablewidget/listviewwidget.dart';
+import 'package:flutterstudy/scrollablewidget/scrollcontrollerwidget.dart';
+import 'package:flutterstudy/scrollablewidget/signlechildscrollviewwidget.dart';
 
 void main() {
   runApp(MyApp());
@@ -255,7 +260,7 @@ class _MainContainerState extends State<MainContainer> {
 
   int getRandomColor() {
     var r = Random().nextInt(_colorList.length);
-    print("r=$r");
+//    print("r=$r");
     return r;
   }
 
@@ -278,7 +283,7 @@ class _MainContainerState extends State<MainContainer> {
           padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: Wrap(
             direction: Axis.horizontal,
-            alignment: WrapAlignment.spaceBetween,
+            alignment: WrapAlignment.start,
             spacing: 10.0,
             runSpacing: 0,
             children: <Widget>[
@@ -355,10 +360,50 @@ class _MainContainerState extends State<MainContainer> {
               RaisedButton(
                 color: _colorList[getRandomColor()],
                 onPressed: () {
-                  goPage(RelativeLayout());
+                  goPage(SingleChildScrollViewWidget());
                 },
                 child: Text(
                   'SingleChildScrollView',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(ListViewWidget());
+                },
+                child: Text(
+                  'ListView',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(GridViewWidget());
+                },
+                child: Text(
+                  'GridView',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(CustomScrollViewWidget());
+                },
+                child: Text(
+                  'CustomScrollView',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(ScrollControllerWidget());
+                },
+                child: Text(
+                  'ScrollController',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
