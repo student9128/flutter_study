@@ -16,6 +16,7 @@ import 'package:flutterstudy/scrollablewidget/gridviewwidget.dart';
 import 'package:flutterstudy/scrollablewidget/listviewwidget.dart';
 import 'package:flutterstudy/scrollablewidget/scrollcontrollerwidget.dart';
 import 'package:flutterstudy/scrollablewidget/signlechildscrollviewwidget.dart';
+import 'package:flutter_flexible_toast/flutter_flexible_toast.dart';
 
 void main() {
   runApp(MyApp());
@@ -271,6 +272,8 @@ class _MainContainerState extends State<MainContainer> {
         context, new MaterialPageRoute(builder: (context) => routeName));
   }
 
+  DateTime _lastPressedTime;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -287,6 +290,24 @@ class _MainContainerState extends State<MainContainer> {
             spacing: 10.0,
             runSpacing: 0,
             children: <Widget>[
+              WillPopScope(
+                  child: Container(),
+                  onWillPop: () async {
+                    if (_lastPressedTime == null ||
+                        DateTime.now().difference(_lastPressedTime) >
+                            Duration(milliseconds: 1500)) {
+                      _lastPressedTime = DateTime.now();
+                      FlutterFlexibleToast.showToast(
+                          message: '再点一次退出',
+                          toastLength: Toast.LENGTH_SHORT,
+                          radius: 100,
+                          backgroundColor: Color.fromRGBO(255, 0, 0, 0.8));
+//                      Scaffold.of(context)
+//                          .showSnackBar(SnackBar(content: Text('再点击一次退出'),duration: Duration(seconds: 2),));
+                      return false;
+                    }
+                    return true;
+                  }),
               RaisedButton(
                 color: _colorList[getRandomColor()],
                 onPressed: () {
