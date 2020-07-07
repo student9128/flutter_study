@@ -176,7 +176,7 @@ class _HomePageState extends State<HomePage>
   TabController _tabController;
   List tabs = ['新闻', '历史', '图片'];
   Widget _tab;
-  List<Widget> _widgetList;
+  List<Widget> _widgetList=List();
 
   @override
   void initState() {

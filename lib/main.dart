@@ -1,7 +1,7 @@
 import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterstudy/calculator.dart';
 import 'package:flutterstudy/containerwidget/constraintwidget.dart';
 import 'package:flutterstudy/containerwidget/navwidget.dart';
 import 'package:flutterstudy/layoutwidget/flexlayout.dart';
@@ -17,6 +17,7 @@ import 'package:flutterstudy/scrollablewidget/listviewwidget.dart';
 import 'package:flutterstudy/scrollablewidget/scrollcontrollerwidget.dart';
 import 'package:flutterstudy/scrollablewidget/signlechildscrollviewwidget.dart';
 import 'package:flutter_flexible_toast/flutter_flexible_toast.dart';
+import 'package:flutterstudy/tipwidget.dart';
 
 void main() {
   runApp(MyApp());
@@ -425,6 +426,26 @@ class _MainContainerState extends State<MainContainer> {
                 },
                 child: Text(
                   'ScrollController',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(TipWidget());
+                },
+                child: Text(
+                  '弹窗提示',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              RaisedButton(
+                color: _colorList[getRandomColor()],
+                onPressed: () {
+                  goPage(CalculatorWidget());
+                },
+                child: Text(
+                  '计算器',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
